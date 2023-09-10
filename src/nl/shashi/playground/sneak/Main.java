@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 import static nl.shashi.playground.sneak.Sneaky.sneak;
+import static nl.shashi.playground.sneak.Sneaky.sneaked;
 
 
 public class Main {
@@ -23,6 +24,9 @@ public class Main {
             sneak(() -> Thread.sleep(1));
             return vs+1;
         }).forEach(System.out::println);
+
+        sneaked(Main::testThrowCheckedException).run();
+        sneaked(Main::testThrowCheckedExceptionWithReturn).get();
     }
 
     private static void testThrowCheckedException() throws IOException {
